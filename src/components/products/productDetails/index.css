@@ -1,0 +1,11 @@
+.cardImg {
+  width: fit-content;
+  display: flex;
+  margin-bottom: 5%;
+}
+.carouselImg {
+  width: 30vw;
+}
+.inputQte {
+  margin-bottom: 5%;
+}
