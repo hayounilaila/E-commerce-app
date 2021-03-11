@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 5vh;
+  align-items: center;
+  background-color: #008080;
+  color: white;
+  margin-bottom: 15px;
+}
+.header h6 {
+  margin: 0;
+}
+.btn-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.btn-header:hover {
+  text-decoration: none;
+  color: white;
+}

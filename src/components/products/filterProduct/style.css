@@ -1,0 +1,15 @@
+.aside-nav {
+  padding: 2%;
+  width: 15vw;
+}
+.aside-nav h6 {
+  color: teal;
+}
+.nav-link {
+  color: black;
+  font-weight: normal;
+  font-size: small;
+}
+.nav-link:hover {
+  color: teal;
+}

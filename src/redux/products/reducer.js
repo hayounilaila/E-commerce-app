@@ -3,18 +3,27 @@ import {
   GET_PRODUCT_BY_ID,
   SET_PRODUCTS_DATA,
   SET_PRODUCT_DATA,
+  ERROR_GET_ALL_PRODUCTS,
 } from "./actionTypes";
+
 const initialState = {
   products: [],
   isLoading: false,
   searchedProduct: {},
+  errorGetAllProducts: undefined,
 };
-export default (state = initialState, action) => {
+const Reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_PRODUCTS:
       return {
         ...state,
         isLoading: true,
+      };
+    case ERROR_GET_ALL_PRODUCTS:
+      return {
+        ...state,
+        isLoading: false,
+        errorGetAllProducts: action.payload,
       };
     case GET_PRODUCT_BY_ID:
       return {
@@ -37,3 +46,4 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+export default Reducer;

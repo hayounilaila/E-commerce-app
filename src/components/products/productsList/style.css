@@ -1,0 +1,9 @@
+.row {
+  margin-top: 15px;
+}
+.link:hover {
+  text-decoration: none;
+}
+.container-div {
+  display: flex;
+}

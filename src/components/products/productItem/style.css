@@ -1,0 +1,10 @@
+.card {
+  width: 15vw;
+}
+.card,
+.nav-link {
+  cursor: pointer;
+}
+.title {
+  color: teal;
+}

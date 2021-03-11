@@ -1,0 +1,23 @@
+.cardImg {
+  width: fit-content;
+  display: flex;
+}
+.carouselImg {
+  width: 30vw;
+}
+.inputQte {
+  margin-bottom: 5%;
+}
+.cardImg .btnP {
+  background-color: teal;
+  color: white;
+  border: none;
+}
+.cardImg .btnP:hover {
+  background-color: white;
+  color: teal;
+  border: solid 1px teal;
+}
+.lin:hover {
+  text-decoration: none;
+}

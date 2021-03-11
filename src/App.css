@@ -1,23 +1,7 @@
-.App {
-  display: flex;
-}
-.header {
-  display: flex;
-  justify-content: flex-end;
-}
-.btn-header {
-  margin: 2%;
-}
 .col {
   margin-bottom: 5%;
 }
-.card {
-  width: 20vw;
-}
-.card,
-.nav-link {
-  cursor: pointer;
-}
+
 .center {
   margin: 0;
   position: absolute;

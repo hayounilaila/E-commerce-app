@@ -6,18 +6,16 @@ import {
   CarouselIndicators,
 } from "reactstrap";
 
-const ProductImageCarousel = function ({ product }) {
+const ProductImageCarousel = function ({ images }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const next = () => {
-    const nextIndex =
-      activeIndex === product.images.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   };
 
   const previous = () => {
-    const nextIndex =
-      activeIndex === 0 ? product.images.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
 
@@ -25,7 +23,7 @@ const ProductImageCarousel = function ({ product }) {
     setActiveIndex(newIndex);
   };
 
-  const slides = ((product?.images && product.images) || []).map((item) => {
+  const slides = images.map((item) => {
     return (
       <CarouselItem key={item}>
         <img className="carouselImg" src={item} alt="img" />
@@ -36,7 +34,7 @@ const ProductImageCarousel = function ({ product }) {
   return (
     <Carousel activeIndex={activeIndex} next={next} previous={previous}>
       <CarouselIndicators
-        items={(product?.images && product.images) || []}
+        items={images}
         activeIndex={activeIndex}
         onClickHandler={goToIndex}
       />

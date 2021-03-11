@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { setProducts, setProduct } from "./actions";
+
+import { setProducts, setProduct, errorGetProducts } from "./actions";
 import { getAllProductsApi, getProductApi } from "./api";
 import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_ID } from "./actionTypes";
 
@@ -10,6 +11,7 @@ function* getAllProducts({ payload }) {
     payload.successCallBack(response.data);
   } catch (error) {
     console.log(error);
+    yield put(errorGetProducts("erreur"));
   }
 }
 function* getProduct({ payload }) {
@@ -18,6 +20,7 @@ function* getProduct({ payload }) {
     yield put(setProduct(response.data));
   } catch (error) {
     console.log(error);
+    yield put(errorGetProducts("erreur"));
   }
 }
 export default function* actionWatcherProduct() {

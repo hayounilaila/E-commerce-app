@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Spinner } from "reactstrap";
+import { Spinner, Alert } from "reactstrap";
 
 import { ProductsList } from "../components/products/productsList";
 import { getProducts } from "../redux/products/actions";
@@ -23,8 +23,8 @@ const Products = function Products(props) {
   }, []);
 
   return props.isLoading ? (
-    <Spinner size="sm" color="primary" className="center" type="grow" />
-  ) : (
+    <Spinner size="sm" color="teal" className="center" type="grow" />
+  ) : !props.error ? (
     <ProductsList
       products={productsList}
       sortPriceAsc={() =>
@@ -39,12 +39,15 @@ const Products = function Products(props) {
         setProductsList([...productsList].sort((a, b) => b.id - a.id))
       }
     />
+  ) : (
+    <Alert color="danger">{props.error}</Alert>
   );
 };
 const mapStateToProps = ({ products }) => {
   return {
     products: products.products,
     isLoading: products.isLoading,
+    error: products.errorGetAllProducts,
   };
 };
 export default connect(mapStateToProps, { getProducts })(Products);

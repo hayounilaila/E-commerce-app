@@ -7,12 +7,10 @@ import { AppRoutes } from "./routes";
 
 function App() {
   return (
-    <Container className="themed-container" fluid={true}>
+    <Router>
       <Header />
-      <Router>
-        <AppRoutes />
-      </Router>
-    </Container>
+      <AppRoutes />
+    </Router>
   );
 }
 

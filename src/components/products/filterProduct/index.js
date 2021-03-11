@@ -1,6 +1,7 @@
 import { useState } from "react";
-
 import { Nav, NavItem, NavLink, Input, Label } from "reactstrap";
+
+import "./style.css";
 
 export function FilterProduct(props) {
   const [checked, setChecked] = useState(false);
@@ -10,7 +11,7 @@ export function FilterProduct(props) {
   };
 
   return (
-    <div>
+    <div className="aside-nav">
       <h6>Prix</h6>
       <Nav vertical>
         <NavItem>
@@ -21,6 +22,7 @@ export function FilterProduct(props) {
         </NavItem>
       </Nav>
       <hr />
+      <h6>Livraison</h6>
       <Nav vertical>
         <NavItem>
           <NavLink>

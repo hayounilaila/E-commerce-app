@@ -1,9 +1,6 @@
-import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  Card,
   CardText,
   CardBody,
   CardTitle,
@@ -12,57 +9,60 @@ import {
   Row,
   Col,
   Input,
+  Container,
 } from "reactstrap";
 
-import "./index.css";
-import { getProductById, getProducts } from "../../../redux/products/actions";
 import ProductImageCarousel from "./ProductImageCarousel";
 import { ProductItem } from "../productItem";
+import "./style.css";
 
-function ProductDetails(props) {
-  let { id } = useParams();
-
-  useEffect(() => {
-    props.getProductById(id);
-    props.getProducts(() => {});
-  }, [id]);
-
+export default function ProductDetailsComponent(props) {
+  const [qte, setQte] = useState(0);
   return (
-    <div>
+    <Container fluid={true}>
       <div className="cardImg">
-        <ProductImageCarousel top product={props.product} />
+        <ProductImageCarousel top images={props.product.images || []} />
         <CardBody>
           <CardTitle tag="h5">{props.product.title}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">
             {props.product.price} DH
           </CardSubtitle>
           <CardText>{props.product.description}</CardText>
-          <Input type="number" placeholder="quantité" className="inputQte" />
-          <Button>Ajouter au panier</Button>
+          <Input
+            type="number"
+            placeholder="quantité"
+            className="inputQte"
+            onChange={(e) => setQte(e.target.value)}
+            min={1}
+          />
+          <Button
+            className="btnP"
+            onClick={() => {
+              if (qte > 0) {
+                props.handleAdd(qte);
+              } else alert("Erreur");
+            }}
+          >
+            Ajouter au panier
+          </Button>
         </CardBody>
       </div>
+      <hr />
       <h5>Voir aussi</h5>
       <Row xs="3">
         {props.products
           .filter((p) => p.category === props.product.category)
           .map((p) => (
             <Col key={p.id}>
-              <Link to={{ pathname: `/productDetails/${p.id}` }}>
+              <Link
+                to={{ pathname: `/productDetails/${p.id}` }}
+                className="link"
+              >
                 <ProductItem product={p} />
               </Link>
             </Col>
           ))}
       </Row>
-    </div>
+    </Container>
   );
 }
-const mapStateToProps = ({ products }) => {
-  return {
-    product: products.searchedProduct,
-    products: products.products,
-    isLoading: products.isLoading,
-  };
-};
-export default connect(mapStateToProps, { getProductById, getProducts })(
-  ProductDetails
-);

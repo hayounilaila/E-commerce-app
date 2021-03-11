@@ -1,12 +1,10 @@
 import axios from "axios";
 
+import { SERVER_API_URL } from "../../util/constants";
+
 export const getAllProductsApi = () => {
-  return axios.get(
-    "https://604731389e5ab30017394534.mockapi.io/api/v1/products"
-  );
+  return axios.get(SERVER_API_URL + "/products");
 };
 export const getProductApi = (id) => {
-  return axios.get(
-    `https://604731389e5ab30017394534.mockapi.io/api/v1/products/${id}`
-  );
+  return axios.get(SERVER_API_URL + "/products/" + id);
 };
