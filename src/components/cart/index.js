@@ -2,7 +2,7 @@ import { Table, Container, Button } from "reactstrap";
 import { IoTrash } from "react-icons/io5";
 
 import "./style.css";
-
+import emptyCartLogo from "../../assets/images/shoppCart.png";
 export function CartComponent(props) {
   return (
     <Container fluid={true}>
@@ -18,28 +18,36 @@ export function CartComponent(props) {
           </tr>
         </thead>
         <tbody>
-          {props.commandes.map((c) => (
-            <tr key={c.id}>
-              <th scope="row">
-                <img src={c.images[0]} alt="product" />
-              </th>
-              <td>{c.title}</td>
-              <td>{c.price} DH</td>
-              <td>{c.qte}</td>
-              <td>{c.price * c.qte} DH</td>
-              <td>
-                <Button
-                  className="icon-btn"
-                  onClick={() => {
-                    props.deleteProduct(c);
-                  }}
-                >
-                  <IoTrash color="white" />
-                  Supprimer
-                </Button>
+          {props.commandes.length ? (
+            props.commandes.map((c) => (
+              <tr key={c.id}>
+                <th scope="row">
+                  <img src={c.images[0]} alt="product" />
+                </th>
+                <td>{c.title}</td>
+                <td>{c.price} DH</td>
+                <td>{c.qte}</td>
+                <td>{c.price * c.qte} DH</td>
+                <td>
+                  <Button
+                    className="icon-btn"
+                    onClick={() => {
+                      props.deleteProduct(c);
+                    }}
+                  >
+                    <IoTrash color="white" />
+                    Supprimer
+                  </Button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td className="td-img" colSpan={6}>
+                <img className="logo" src={emptyCartLogo} />
               </td>
             </tr>
-          ))}
+          )}
           <tr>
             <td className="tfooter" colSpan={6}>
               <h6>

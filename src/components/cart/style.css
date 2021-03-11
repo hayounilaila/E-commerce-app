@@ -12,3 +12,9 @@ th {
   justify-content: center;
   align-items: center;
 }
+.logo {
+  width: 40%;
+}
+.td-img {
+  text-align: center;
+}
