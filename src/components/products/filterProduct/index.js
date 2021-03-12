@@ -1,17 +1,23 @@
 import { useState } from "react";
-import { Nav, NavItem, NavLink, Input, Label } from "reactstrap";
+import { Nav, NavItem, NavLink, Input, Label, Button } from "reactstrap";
 
 import "./style.css";
 
 export function FilterProduct(props) {
   const [checked, setChecked] = useState(false);
+
   const handleOnChange = (e) => {
     setChecked(e.target.checked);
     props.filterByExpd(e.target.checked);
   };
+  const resetFilter = () => {
+    props.resetFilter();
+    setChecked(false);
+  };
 
   return (
     <div className="aside-nav">
+      <h6 className="h-title">Filters</h6>
       <h6>Prix</h6>
       <Nav vertical>
         <NavItem>
@@ -21,7 +27,9 @@ export function FilterProduct(props) {
           <NavLink onClick={() => props.sortPriceDesc()}>Décroissant</NavLink>
         </NavItem>
       </Nav>
-      <hr />
+      <div>
+        <hr />
+      </div>
       <h6>Livraison</h6>
       <Nav vertical>
         <NavItem>
@@ -38,7 +46,9 @@ export function FilterProduct(props) {
           </NavLink>
         </NavItem>
       </Nav>
-      <hr />
+      <div>
+        <hr />
+      </div>
       <h6>Date d'ajout</h6>
       <Nav vertical>
         <NavItem>
@@ -52,6 +62,9 @@ export function FilterProduct(props) {
           </NavLink>
         </NavItem>
       </Nav>
+      <Button className="btnP" onClick={resetFilter}>
+        Annuler les filtres
+      </Button>
     </div>
   );
 }

@@ -18,8 +18,9 @@ import "./style.css";
 
 export default function ProductDetailsComponent(props) {
   const [qte, setQte] = useState(0);
+
   return (
-    <Container fluid={true}>
+    <Container fluid={true} className="margin-div">
       <div className="cardImg">
         <ProductImageCarousel top images={props.product.images || []} />
         <CardBody>
@@ -40,7 +41,7 @@ export default function ProductDetailsComponent(props) {
             onClick={() => {
               if (qte > 0) {
                 props.handleAdd(qte);
-              } else alert("Erreur");
+              } else alert("Veuillez saisir la quantité");
             }}
           >
             Ajouter au panier
@@ -52,6 +53,7 @@ export default function ProductDetailsComponent(props) {
       <Row xs="3">
         {props.products
           .filter((p) => p.category === props.product.category)
+          .slice(0, 3)
           .map((p) => (
             <Col key={p.id}>
               <Link

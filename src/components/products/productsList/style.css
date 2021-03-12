@@ -1,9 +1,15 @@
-.row {
-  margin-top: 15px;
+.div-center .row {
+  margin: 0;
 }
 .link:hover {
   text-decoration: none;
 }
 .container-div {
   display: flex;
+  height: calc(100% - 50px);
+}
+.div-center {
+  margin-top: 20px;
+  margin-left: 7%;
+  width: 75vw;
 }

@@ -9,15 +9,18 @@
   margin-bottom: 5%;
 }
 .cardImg .btnP {
-  background-color: teal;
+  background-color: #151538;
   color: white;
   border: none;
 }
 .cardImg .btnP:hover {
   background-color: white;
-  color: teal;
-  border: solid 1px teal;
+  color: #151538;
+  border: solid 1px #151538;
 }
 .lin:hover {
   text-decoration: none;
+}
+.margin-div {
+  margin-top: 22px;
 }

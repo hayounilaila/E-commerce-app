@@ -1,11 +1,10 @@
 .header {
   display: flex;
   justify-content: space-between;
-  height: 5vh;
+  height: 50px;
   align-items: center;
-  background-color: #008080;
+  background-color: #151538;
   color: white;
-  margin-bottom: 15px;
 }
 .header h6 {
   margin: 0;

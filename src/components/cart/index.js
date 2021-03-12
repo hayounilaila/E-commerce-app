@@ -1,11 +1,11 @@
-import { Table, Container, Button } from "reactstrap";
-import { IoTrash } from "react-icons/io5";
+import { Table, Container } from "reactstrap";
+import { IoTrash, IoCart } from "react-icons/io5";
 
 import "./style.css";
-import emptyCartLogo from "../../assets/images/shoppCart.png";
+
 export function CartComponent(props) {
   return (
-    <Container fluid={true}>
+    <Container className="themed-container margin-div">
       <Table>
         <thead>
           <tr>
@@ -29,22 +29,21 @@ export function CartComponent(props) {
                 <td>{c.qte}</td>
                 <td>{c.price * c.qte} DH</td>
                 <td>
-                  <Button
+                  <IoTrash
+                    color="#151538"
                     className="icon-btn"
+                    size={20}
                     onClick={() => {
                       props.deleteProduct(c);
                     }}
-                  >
-                    <IoTrash color="white" />
-                    Supprimer
-                  </Button>
+                  />
                 </td>
               </tr>
             ))
           ) : (
             <tr>
               <td className="td-img" colSpan={6}>
-                <img className="logo" src={emptyCartLogo} />
+                <IoCart size={200} color="#151538" />
               </td>
             </tr>
           )}

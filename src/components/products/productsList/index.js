@@ -1,4 +1,4 @@
-import { Row, Col, Container } from "reactstrap";
+import { Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 
 import { ProductItem } from "../productItem";
@@ -14,8 +14,9 @@ export function ProductsList(props) {
         filterByExpd={props.filterByExpd}
         sortByInsertDayAsc={props.sortByInsertDayAsc}
         sortByInsertDayDesc={props.sortByInsertDayDesc}
+        resetFilter={props.resetFilter}
       />
-      <Container>
+      <div className="div-center">
         <Row xs="3">
           {props.products.map((p) => (
             <Col key={p.id}>
@@ -28,7 +29,7 @@ export function ProductsList(props) {
             </Col>
           ))}
         </Row>
-      </Container>
+      </div>
     </div>
   );
 }

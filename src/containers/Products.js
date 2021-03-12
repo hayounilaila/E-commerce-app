@@ -34,10 +34,13 @@ const Products = function Products(props) {
         setProductsList([...productsList].sort((a, b) => b.price - a.price))
       }
       filterByExpd={filterByExpd}
-      sortByInsertDayAsc={() => setProductsList(props.products)}
+      sortByInsertDayAsc={() =>
+        setProductsList([...productsList].sort((a, b) => a.id - b.id))
+      }
       sortByInsertDayDesc={() =>
         setProductsList([...productsList].sort((a, b) => b.id - a.id))
       }
+      resetFilter={() => setProductsList(props.products)}
     />
   ) : (
     <Alert color="danger">{props.error}</Alert>
